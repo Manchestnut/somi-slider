@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="somi1_but_1.ico" />
+    <title>SOMI - SLIDER</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    header {
+      margin: 30px auto;
+      width: 250px;
+      text-align: center;
+      font-size: 22px;
+      font-family: sans-serif;
+    }
+    body {
+      background: pink;
+    }
+    img {
+      width: 250px;
+      margin: 0 auto;
+      display: block;
+      height: 400px;
+    }
+    #img-01 {
+      display: none;
+    }
+    #img-02,
+    #img-03 {
+      width: auto;
+      display: none;
+    }
+    button {
+      border: none;
+      border-radius: 2px;
+      padding: 3px 8px;
+      background: red;
+      color: white;
+      outline: none;
+    }
+    button:hover {
+      width: 50px;
+      height: 30px;
+    }
+    button:active {
+      border: none;
+      background-color: yellow;
+    }
+    button:visited {
+      border: none;
+    }
+    .btn-container {
+      margin: 0 auto;
+      width: fit-content;
+      padding: 12px;
+    }
+  </style>
+
+  <body>
+    <header><h2>A Somi Slider</h2></header>
+    <img class="img" id="img-00" src="images/somi1.jpg" />
+    <img class="img" id="img-01" src="images/somi.jpg" />
+    <img class="img" id="img-02" src="images/somi2.png" />
+    <img class="img" id="img-03" src="images/somi3.png" />
+
+    <div class="btn-container">
+      <button class="btn" id="prev-btn">Prev</button>
+      <button class="btn" id="next-btn">Next</button>
+    </div>
+
+    <script>
+      const img = document.querySelectorAll(".img");
+      const prevBtn = document.querySelector("#prev-btn");
+      const nextBtn = document.querySelector("#next-btn");
+
+      var counter = 0;
+      prevBtn.addEventListener("click", (e) => {
+        counter--;
+
+        if (counter < 0) {
+          counter = 3;
+          img[counter].style.display = "block";
+          img[0].style.display = "none";
+        } else {
+          img[counter].style.display = "block";
+          img[counter + 1].style.display = "none";
+        }
+      });
+      nextBtn.addEventListener("click", (e) => {
+        counter++;
+
+        if (counter > 3) {
+          counter = 0;
+          img[counter].style.display = "block";
+          img[3].style.display = "none";
+        } else {
+          img[counter].style.display = "block";
+          img[counter - 1].style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
